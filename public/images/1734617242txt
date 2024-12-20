@@ -1,0 +1,12 @@
+Dushanba: Middleware va Validation’ni kuchaytirish
+Maqsad: Middleware orqali xavfsizlikni oshirish va request’larni nazorat qilishni mukammallashtirish.
+
+O‘rganish:
+Middleware’ning ichki ishlashi.
+Custom middleware yozish.
+Request va Response’ni middleware ichida manipulyatsiya qilish.
+Validation’ni middleware bilan birlashtirish.
+Amaliyot:
+
+Custom middleware yarating, masalan, admin foydalanuvchilarni autentifikatsiya qilish.
+Katta shakldagi validation qoidalarini middleware’da amalga oshiring.

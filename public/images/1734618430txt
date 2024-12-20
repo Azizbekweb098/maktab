@@ -1,0 +1,11 @@
+Chorshanba: Broadcasting va Real-Time Integration
+Maqsad: Real-time ilova funksiyalarini yaratish.
+
+O‘rganish:
+Broadcastingning asosiy tushunchalari.
+Public va Private kanallar.
+Laravel Websockets yoki Pusher bilan ishlash.
+Amaliyot:
+
+Oddiy chat ilovasi uchun xabar yuborishni broadcasting orqali amalga oshiring.
+Foydalanuvchining statusini real-time’da yangilaydigan broadcast yozing.
