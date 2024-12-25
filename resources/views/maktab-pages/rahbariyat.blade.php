@@ -31,7 +31,7 @@
                 <!-- Direktor -->
             @foreach ($rahbariyat as $rah )
             <div class="container">
-                <a href="leaderShipDetail.html" class="mainLeader">
+                <a href="" class="mainLeader">
                     <td><img src="{{ asset('images/' . $rah->image) }}" width="100"></td>
                     <div class="details">
                         <h1><b>{{ $rah->lastname }}</b><br>{{ $rah->name }}<br></h1>
@@ -48,7 +48,7 @@
                     <div class="row">
                     @foreach ($zamD as $zam )
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                        <a href="leaderShipDetail.html" class="deputy_director-main">
+                        <a href="" class="deputy_director-main">
                             <img src="{{ asset('images/' . $zam->image) }}" width="60%" alt="Zam Director">
                             <div class="deputy_director-details">
                                 <h1><b>{{ $zam->lastname }}</b><br>{{ $zam->name }}<br></h1>
@@ -59,7 +59,7 @@
                     @endforeach
                     @foreach ($manaviyat as $man )
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                        <a href="leaderShipDetail.html" class="deputy_director-main">
+                        <a href="" class="deputy_director-main">
                             <img src="{{ asset('images/' . $man->image) }}" width="60%" alt="Zam Director">
                             <div class="deputy_director-details">
                                 <h1><b>{{ $man->lastname }}</b><br>{{ $man->name }}<br></h1>
@@ -70,7 +70,7 @@
                     @endforeach
                     @foreach ($bolim as $zam )
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                        <a href="leaderShipDetail.html" class="deputy_director-main">
+                        <a href="" class="deputy_director-main">
                             <img src="{{ asset('images/' . $zam->image) }}" width="60%" alt="Zam Director">
                             <div class="deputy_director-details">
                                 <h1><b>{{ $zam->lastname }}</b><br>{{ $zam->name }}<br></h1>
@@ -81,7 +81,7 @@
                     @endforeach
                     @foreach ($yoshlar as $zam )
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                        <a href="leaderShipDetail.html" class="deputy_director-main">
+                        <a href="" class="deputy_director-main">
                             <img src="{{ asset('images/' . $zam->image) }}" width="60%" alt="Zam Director">
                             <div class="deputy_director-details">
                                 <h1><b>{{ $zam->lastname }}</b><br>{{ $zam->name }}<br></h1>

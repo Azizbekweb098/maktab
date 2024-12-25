@@ -41,7 +41,7 @@ class oneSemenaControlller extends Controller
     
         one_smena::create($requestData);
     
-        return redirect()->route('smena-1.index');
+        return redirect()->route('smena-1.index'); 
     }
 
     /**

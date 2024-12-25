@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ahborot\GeleriyaController;
 use App\Http\Controllers\Admin\ahborot\InfografikaController;
 use App\Http\Controllers\Admin\ahborot\maktabNewsController;
 use App\Http\Controllers\Admin\BolimBoshligiController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ManaviyatchiController;
 use App\Http\Controllers\Admin\RahbariyatController;
 use App\Http\Controllers\Admin\talim\oneSemenaControlller;
@@ -17,10 +18,10 @@ use App\Http\Controllers\Admin\Teachers\OliyController;
 use App\Http\Controllers\Admin\UserCreateController;
 use App\Http\Controllers\Admin\YoshlarY;
 use App\Http\Controllers\Admin\ZamDirektorController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MaktabController;
 use App\Http\Controllers\ProfileController;
-
-
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,10 +42,9 @@ Route::get('/', function () {
 
 
 Route::middleware(['auth', 'verified'])->group( function() {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
     
-    })->middleware(['auth', 'verified'])->name('dashboard');
+
 //   rahbariyat start
     Route::resource('user', UserCreateController::class)->names('users');
     Route::resource('rahbariyat', RahbariyatController::class)->names('rahbariyat');
@@ -79,6 +79,13 @@ Route::get('maktab-task', [MaktabController::class, 'maktabtask'])->name('maktab
 Route::get('maktab-rahbariyat', [MaktabController::class, 'rahbariyat'])->name('maktab-rahbariyat.index');
 Route::get('maktab-teachers', [MaktabController::class, 'teachers'])->name('maktab-teachers.index');
 Route::get('maktab-rekvizit', [MaktabController::class, 'rekvizit'])->name('maktab-rekvizit.index');
+Route::get('one_smena', [MaktabController::class, 'one_smena'])->name('one_smena');
+Route::get('f-r', [MaktabController::class, 'foydali'])->name('foydali');
+Route::get('m-n', [MaktabController::class, 'newsm'])->name('newsm');
+Route::get('g-l', [MaktabController::class, 'galeriya'])->name('galeriya');
+Route::get('i-g', [MaktabController::class, 'info'])->name('info');
+Route::resource('contact', ContactController::class)->names('contact');
+Route::resource('search', SearchController::class)->names('search');
 // end asosiy panel
 
 

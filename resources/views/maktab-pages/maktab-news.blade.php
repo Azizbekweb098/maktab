@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,8 +13,9 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Asosiy</title>
+    <title>Maktab yangiliklari</title>
 
+  
     <!-- Bootstrap core css -->
     <link rel="stylesheet" href="{{ asset('maktab/css/bootstrap.css') }}">
 
@@ -188,12 +188,12 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="{{ route('contact.index') }}">Boglanish </a>
+                                            <a href="connect.html">Boglanish </a>
                                         </li>
                                     </ul>
                                 </div>
                                 <!-- Search Start-->
-                                <form id="w2" class="mainSearchForm" action="{{ route('search.index') }}" method="get">
+                                <form id="w2" class="mainSearchForm" action="search.html" method="get">
                                     <div class="input-group">
                                         <input type="text" id="mainSearch" class="form-control" placeholder="Izlash"
                                             name="ContentSearch">
@@ -222,28 +222,97 @@
                     </div>
                 </div>
             </div>
-            <!-- Header Nav End -->
+            <!-- Image Header Start-->
+            <div class="mainContent withImage">
+                <div class="imageHeader" style="padding-bottom: 0px;">
+                    <div class="container">
+                        <h1 class="pageTitle text-dark">Yangiliklar</h1>
+                        <nav aria-label="breadcrumb">
+                            <ol id="w5" class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Asosiy</a></li>
+                                <li class="breadcrumb-item " aria-current="page">Yangiliklar</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- Image Header End -->
 
-            @yield('navbar')
+        </div>
+    </header>
+    <!-- Header End -->
 
+    <!-- Main section Start -->
+    <main>
+        <section>
+            <div class="schoolNews">
+                <div class="container">
+                    <div class="navigationTabs">
+                        <a href="/uz/news/index" class="active" data-tab="tab1">
+                            <i class="fas fa-newspaper"></i> Yangiliklar
+                        </a>
+                        <a href="/uz/announces/index" class="" data-tab="tab2">
+                            <i class="fas fa-bullhorn"></i> E'lonlar
+                        </a>
+                    </div>
+
+                    <div class="tab-content">
+                        <!-- Content for Yangiliklar tab -->
+                        <div class="tab-pane fade active show" id="tab1">
+                            <div class="imageCardBoxes">
+                                <div class="row">
+                             @foreach ($news as $new )
+                             <div class="col-xl-4 col-lg-4 col-md-6">
+                                <a href="">
+                                    <div class="imageBox">
+                                        <img src="{{ asset('images/' . $new->image) }}" width="100">
+                                    </div>
+                                    <h1>{{ $new->title }}</h1>
+                                    <span>{{ $new->created_at }}</span>
+                                </a>
+                            </div>
+                             @endforeach
+                               
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Content for E'lonlar tab -->
+                        <div class="tab-pane fade" id="tab2">
+                            <div class="imageCardBoxes">
+                                <a href="">
+                                    <div class="imageBox">
+                                        <img src="{{ asset('images/' . $new->image) }}" width="100">
+                                    </div>
+                                    <h1>{{ $new->title }}</h1>
+                                    <span>{{ $new->created_at }}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Main section End -->
 
     <!-- Footer Start  -->
     <footer>
-        <div class="footer">
+        <div class="footer mt-5">
             <div class="container">
                 <div class="row">
                     <ul class="footer_menu">
                         <li>
-                            <a href="https://vacancy.argos.uz/">Bo'sh ish o'rinlari</a>
+                            <a href="">Bo'sh ish o'rinlari</a>
                         </li>
                         <li>
-                            <a href="schoolRules.html">Maktab qonun qoidalari</a>
+                            <a href="">Maktab qonun qoidalari</a>
                         </li>
                         <li>
-                            <a href="FAQ.html">Tez-tez beriladigan savollar</a>
+                            <a href="">Tez-tez beriladigan savollar</a>
                         </li>
                         <li>
-                            <a href="stateSymbols.html">Davlat ramzlari</a>
+                            <a href="">Davlat ramzlari</a>
                         </li>
                     </ul>
                 </div>
@@ -269,7 +338,7 @@
                 </div>
                 <div class="footer_logo">
                     <span>
-                        <img src="{{ asset('maktab/./image/Gerb.png') }}" alt="Logo" width="20%">
+                        <img src="./image/Gerb.png" alt="Logo" width="20%">
                     </span>
                     <a href="">
                         329-sonli Umumta'lim maktabi
@@ -279,7 +348,7 @@
 
 
                 <a href="#" class="it_live-logo">
-                    <img src="{{ asset('maktab/./image/It live logo for red-04-04.png') }}" alt="IT_Live" class="it_live-img">
+                    <img src="./image/It live logo for red-04-04.png" alt="IT_Live" width="10%">
                 </a>
                 <span class="year_text">
                     © 2020-2023 Barcha huquqlar himoyalangan
@@ -291,6 +360,9 @@
 
 </body>
 
+
+
+<!-- Js -->
 <!-- Js -->
 
 <script src="{{ asset('maktab/js/bootstrap.js') }}"></script>
@@ -303,7 +375,67 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <!-- Js -->
 
+<!-- Js -->
+<script>
+    $(document).ready(function () {
+        $(".searchBtn").click(function (e) {
+            e.preventDefault();
+            $(".mainSearchForm").toggleClass("active");
+        });
 
+        $(".closeBtn").click(function (e) {
+            e.preventDefault();
+            $(".mainSearchForm").removeClass("active");
+        });
+
+        const bigMenuBtn = document.querySelector('.bigMenuBtn');
+        const overlay = document.querySelector('.overlay');
+
+        bigMenuBtn.addEventListener('click', function () {
+            this.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        });
+
+
+        $('.js-tilt').tilt({
+            scale: 1.2
+        })
+
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get all tab links inside the navigationTabs div
+        const tabLinks = document.querySelectorAll(".navigationTabs a");
+
+        // Get all tab panes
+        const tabPanes = document.querySelectorAll(".tab-content .tab-pane");
+
+        // Add click event listeners to the tab links
+        tabLinks.forEach(function (tabLink) {
+            tabLink.addEventListener("click", function (event) {
+                event.preventDefault();
+
+                // Remove the 'active' class from all tab links and tab panes
+                tabLinks.forEach(function (link) {
+                    link.classList.remove("active");
+                });
+                tabPanes.forEach(function (pane) {
+                    pane.classList.remove("active", "show");
+                });
+
+                // Add the 'active' class to the clicked tab link and corresponding tab pane
+                const targetTabId = this.getAttribute("data-tab");
+                const targetTabPane = document.getElementById(targetTabId);
+
+                if (targetTabPane) {
+                    this.classList.add("active");
+                    targetTabPane.classList.add("active", "show");
+                }
+            });
+        });
+    });
+
+</script>
 
 
 

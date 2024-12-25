@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin\ahborot;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Infografika;
+use App\Mail\contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
-class InfografikaController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $info = Infografika::all();
-        return view('admin.axborot.infografika.index', compact('info'));
+        return view('maktab-pages.contact');
     }
 
     /**
@@ -22,7 +21,7 @@ class InfografikaController extends Controller
      */
     public function create()
     {
-        return view('admin.axborot.infografika.create');
+        //
     }
 
     /**
@@ -30,18 +29,15 @@ class InfografikaController extends Controller
      */
     public function store(Request $request)
     {
-        $requestData = $request->all();
-        
-        if($request->hasFile('image')){
-            $file = $request->file('image');
-            $image_name = time().''.$file->getClientOriginalExtension();
-            $file->move('images/', $image_name);
-            $requestData['image'] = $image_name;
-        }
-    
-        Infografika::create($requestData);
-    
-        return redirect()->route('infografika.index');
+        $requestData = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email'],
+            'phone' => ['required', 'string'],
+            'mavzu' => ['required', 'string', 'max:110'],
+            'habar' => ['required', 'string'],
+        ]);
+        Mail::to('webcoderazizbek@gmail.com')->send(new contact($requestData));
+        return response()->json(['habar' => 'habar ketdi']);
     }
 
     /**

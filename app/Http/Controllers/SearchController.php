@@ -1,20 +1,28 @@
 <?php
 
-namespace App\Http\Controllers\Admin\ahborot;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Infografika;
+use App\Models\maktabNews;
 use Illuminate\Http\Request;
 
-class InfografikaController extends Controller
+class SearchController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $info = Infografika::all();
-        return view('admin.axborot.infografika.index', compact('info'));
+        $query = $request->input('ContentSearch'); // Qidiruv so'rovi
+
+        $results = [];
+        if ($query) {
+            $results = maktabNews::where('title', 'like', "%{$query}%")->get();
+        }
+
+        return view('maktab-pages.search', [
+            'results' => $results,
+            'query' => $query
+        ]);
     }
 
     /**
@@ -22,7 +30,7 @@ class InfografikaController extends Controller
      */
     public function create()
     {
-        return view('admin.axborot.infografika.create');
+        //
     }
 
     /**
@@ -30,18 +38,7 @@ class InfografikaController extends Controller
      */
     public function store(Request $request)
     {
-        $requestData = $request->all();
-        
-        if($request->hasFile('image')){
-            $file = $request->file('image');
-            $image_name = time().''.$file->getClientOriginalExtension();
-            $file->move('images/', $image_name);
-            $requestData['image'] = $image_name;
-        }
-    
-        Infografika::create($requestData);
-    
-        return redirect()->route('infografika.index');
+        //
     }
 
     /**

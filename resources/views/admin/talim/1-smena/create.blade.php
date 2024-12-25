@@ -1,7 +1,7 @@
 @extends('navbar-section.adminSection')
 
 @section('admin')
-<form action="{{ route('q-darslar.store') }}" method="POST"  enctype="multipart/form-data">
+<form action="{{ route('smena-1.store') }}" method="POST"  enctype="multipart/form-data">
     @csrf
     <div class="container mt-4" style="margin-left: 320px">
         <input type="file" name="file">
